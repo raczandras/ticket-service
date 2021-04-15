@@ -14,6 +14,18 @@ public class Movie {
         this.length = length;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,16 +50,29 @@ public class Movie {
                 '}';
     }
 
-    public String getName() {
-        return name;
-    }
+    public static class Builder {
+        private String name;
+        private String genre;
+        private int length;
 
-    public String getGenre() {
-        return genre;
-    }
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
 
-    public int getLength() {
-        return length;
+        public Builder withGenre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder withLength(int length) {
+            this.length = length;
+            return this;
+        }
+
+        public Movie build() {
+            return new Movie(name, genre, length);
+        }
     }
 
 }
